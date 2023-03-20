@@ -1,4 +1,5 @@
 local lsp = require('lsp-zero')
+local lsp_diagnostic = require('toggle_lsp_diagnostics')
 
 lsp.preset('recommended')
 lsp.ensure_installed({
@@ -7,3 +8,4 @@ lsp.ensure_installed({
 })
 
 lsp.setup()
+lsp_diagnostic.init()
