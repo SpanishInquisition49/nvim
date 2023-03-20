@@ -9,3 +9,5 @@ lsp.ensure_installed({
 
 lsp.setup()
 lsp_diagnostic.init()
+-- Toggle LSP diagnostic
+vim.keymap.set("n", "<leader>ld", vim.cmd.ToggleDiag)

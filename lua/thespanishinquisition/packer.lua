@@ -7,16 +7,26 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  -- Telescope
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.1',
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+  -- Themes
   use { "catppuccin/nvim", as = "catppuccin" }
   use ('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate'})
+  -- Undo Tree
   use ('mbbill/undotree')
+  -- Fugitive (Git Wrapper)
   use ('tpope/vim-fugitive')
+  -- Lateral File Explorer
+  use ('nvim-tree/nvim-tree.lua')
+  use ('nvim-tree/nvim-web-devicons')
+  -- DAP
+  use ('mfussenegger/nvim-dap')
+  -- LSP
   use {
 	  'VonHeikemen/lsp-zero.nvim',
 	  branch = 'v1.x',
@@ -39,4 +49,6 @@ return require('packer').startup(function(use)
 		  {'rafamadriz/friendly-snippets'}, -- Optional
 	  }
   }
+  -- LSP Diagnostics Toggle
+  use ('WhoIsSethDaniel/toggle-lsp-diagnostics.nvim')
 end)
