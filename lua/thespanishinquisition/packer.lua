@@ -1,8 +1,5 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
--- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
-
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
@@ -13,7 +10,8 @@ return require('packer').startup(function(use)
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
-
+  -- Time Record
+  use ('wakatime/vim-wakatime')
   -- Themes
   use { "catppuccin/nvim", as = "catppuccin" }
   use ('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate'})
@@ -53,11 +51,7 @@ return require('packer').startup(function(use)
   use ('WhoIsSethDaniel/toggle-lsp-diagnostics.nvim')
   -- Status Line
   use({
-      "NTBBloodbath/galaxyline.nvim",
-      --your statusline
-      config = function()
-          require("galaxyline.themes.eviline")
-      end,
+      "nvim-lualine/lualine.nvim",
       -- some optional icons
       requires = { "kyazdani42/nvim-web-devicons", opt = true }
   })
