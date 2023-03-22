@@ -1,6 +1,10 @@
 vim.opt.showmode = false
 
 local function git_stash_count()
+    local git_stats = vim.api.nvim_exec('!git status', true)
+    if string.match(git_stats, 'not a git repository') then
+        return 0
+    end
     local stash = vim.api.nvim_exec('!git stash list', true):sub(20)
     local _, count = string.gsub(stash, '\n', '')
     return count
@@ -14,7 +18,7 @@ require('lualine').setup {
     options = {
         icons_enabled = true,
         theme = 'auto',
-        component_separators = { left = '', right = ''},
+        component_separators = { left = '', right = ''},
         section_separators = { left = '', right = ''},
         disabled_filetypes = {
             statusline = {},
@@ -79,5 +83,5 @@ require('lualine').setup {
     tabline = {},
     winbar = {},
     inactive_winbar = {},
-    extensions = {}
+    extensions = {'nvim-tree', 'fugitive', 'mundo', 'toggleterm'},
 }

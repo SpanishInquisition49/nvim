@@ -55,4 +55,6 @@ return require('packer').startup(function(use)
       -- some optional icons
       requires = { "kyazdani42/nvim-web-devicons", opt = true }
   })
+  -- Terminal
+  use('akinsho/toggleterm.nvim')
 end)
