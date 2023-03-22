@@ -57,4 +57,13 @@ return require('packer').startup(function(use)
   })
   -- Terminal
   use('akinsho/toggleterm.nvim')
+  -- Scrollbar & GitSigns
+  use('lewis6991/gitsigns.nvim')
+  use('petertriho/nvim-scrollbar')
+  -- Bufferline
+  use {
+    'akinsho/bufferline.nvim',
+    requires = 'nvim-tree/nvim-web-devicons'
+  }
+
 end)
