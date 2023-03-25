@@ -14,6 +14,34 @@ local function stash()
     return ' ' .. git_stash_count()
 end
 
+local function my_mode_fmt(str)
+    local symbol = ''
+    if str == 'INSERT' then
+        symbol = ' 󰼭'
+    elseif str == 'COMMAND' then
+        symbol = ' '
+    elseif str == 'NORMAL' then
+        symbol = ' '
+    else
+        symbol = ' '
+    end
+    return str .. symbol
+end
+
+local alpha = {
+    sections = {
+        lualine_a = {
+            {'mode', fmt = function() return 'ALPHA' end }
+        },
+        lualine_b = {
+            { 'branch',  icon = {' ', color={fg='white'} } },
+            { stash, cond = function()return git_stash_count() > 0 end },
+        }
+    },
+    filetypes = {'alpha'}
+
+}
+
 require('lualine').setup {
     options = {
         icons_enabled = true,
@@ -34,19 +62,9 @@ require('lualine').setup {
         }
     },
     sections = {
-        lualine_a = { { 'mode', fmt = function(str)
-            local symbol = ''
-            if str == 'INSERT' then
-                symbol = ' 󰼭'
-            elseif str == 'COMMAND' then
-                symbol = ' '
-            elseif str == 'NORMAL' then
-                symbol = ' '
-            else
-                symbol = ' '
-            end
-            return str .. symbol
-        end } },
+        lualine_a = {
+            { 'mode', fmt = my_mode_fmt }
+        },
         lualine_b = {
             { 'branch',  icon = {' ', color={fg='white'} } },
             { stash, cond = function()return git_stash_count() > 0 end },
@@ -83,5 +101,5 @@ require('lualine').setup {
     tabline = {},
     winbar = {},
     inactive_winbar = {},
-    extensions = {'nvim-tree', 'fugitive', 'mundo', 'toggleterm', 'nvim-dap-ui'},
+    extensions = {alpha, 'nvim-tree', 'fugitive', 'mundo', 'toggleterm', 'nvim-dap-ui'},
 }
