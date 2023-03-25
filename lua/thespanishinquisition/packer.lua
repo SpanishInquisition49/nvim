@@ -6,9 +6,9 @@ return require('packer').startup(function(use)
 
   -- Telescope
   use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.1',
-	  -- or                            , branch = '0.1.x',
-	  requires = { {'nvim-lua/plenary.nvim'} }
+      'nvim-telescope/telescope.nvim', tag = '0.1.1',
+      -- or                            , branch = '0.1.x',
+      requires = { {'nvim-lua/plenary.nvim'} }
   }
   -- Time Record
   use ('wakatime/vim-wakatime')
@@ -24,6 +24,7 @@ return require('packer').startup(function(use)
   use ('nvim-tree/nvim-web-devicons')
   -- DAP
   use ('mfussenegger/nvim-dap')
+  use {'rcarriga/nvim-dap-ui', requires = {'mfussenegger/nvim-dap'}}
   -- LSP
   use {
 	  'VonHeikemen/lsp-zero.nvim',
@@ -65,5 +66,4 @@ return require('packer').startup(function(use)
     'akinsho/bufferline.nvim',
     requires = 'nvim-tree/nvim-web-devicons'
   }
-
 end)

@@ -48,7 +48,7 @@ require('lualine').setup {
             return str .. symbol
         end } },
         lualine_b = {
-            { 'branch',  icon = {'', color={fg='white'} } },
+            { 'branch',  icon = {' ', color={fg='white'} } },
             { stash, cond = function()return git_stash_count() > 0 end },
             'diff',
         },
@@ -83,5 +83,5 @@ require('lualine').setup {
     tabline = {},
     winbar = {},
     inactive_winbar = {},
-    extensions = {'nvim-tree', 'fugitive', 'mundo', 'toggleterm'},
+    extensions = {'nvim-tree', 'fugitive', 'mundo', 'toggleterm', 'nvim-dap-ui'},
 }
