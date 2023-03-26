@@ -68,5 +68,13 @@ return require('packer').startup(function(use)
   }
   -- Greeter
   use ('goolord/alpha-nvim')
-
+  -- Which Key
+  use {
+  "folke/which-key.nvim",
+  config = function()
+    vim.o.timeout = true
+    vim.o.timeoutlen = 300
+    require("which-key").setup()
+  end
+}
 end)

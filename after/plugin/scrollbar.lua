@@ -9,7 +9,7 @@ gitsigns.setup {
         virt_text_pos = 'right_align',
         delay = 1000,
     },
-    current_line_blame_formatter = '<author>,<author_time:%Y-%m-%d> - <summary>',
+    current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
 }
 require('scrollbar.handlers.gitsigns').setup()
 scrollbar.setup()

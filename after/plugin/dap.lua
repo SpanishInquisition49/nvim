@@ -29,17 +29,6 @@ dap.configurations.c = {
 dap.configurations.c = dap.configurations.c
 dap.configurations.rust = dap.configurations.c
 
--- Debug --
-vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, {})
-vim.keymap.set('n', '<Leader>dl', function()
-    dap.set_breakpoint({ log_message = vim.fn.input('Log point message: ')});
-end)
-vim.keymap.set("n", "<F5>", dap.continue, {})
-vim.keymap.set("n", "<F10>", dap.step_over, {})
-vim.keymap.set("n", "<F11>", dap.step_into, {})
-vim.keymap.set("n", "<F12>", dap.step_out, {})
-vim.keymap.set('n', '<Leader>dr', dap.repl.open, {})
-vim.keymap.set('n', '<leader>du', dapui.toggle, {})
 -- DAP UI Auto Toggle --
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()

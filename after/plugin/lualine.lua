@@ -22,6 +22,8 @@ local function my_mode_fmt(str)
         symbol = ' '
     elseif str == 'NORMAL' then
         symbol = ' '
+    elseif str == 'ALPHA' then
+        symbol = ' 󰀫'
     else
         symbol = ' '
     end
@@ -31,7 +33,7 @@ end
 local alpha = {
     sections = {
         lualine_a = {
-            {'mode', fmt = function() return 'ALPHA' end }
+            {'mode', fmt = function() return my_mode_fmt('ALPHA') end }
         },
         lualine_b = {
             { 'branch',  icon = {' ', color={fg='white'} } },
