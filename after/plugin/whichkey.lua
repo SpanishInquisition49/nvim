@@ -41,6 +41,7 @@ wk.register({
     -- LSP --
     ['<leader>l'] = { name = '+LSP' },
     ['<leader>ld'] = {'<cmd>ToggleDiag<cr>', 'Toggle Diagnostics'},
+    ['<leader>li'] = {'<cmd>IndentBlanklineToggle<cr>', 'Toggle Indent Line'},
     -- Undotree --
     ['<leader>u'] = {'<cmd>UndotreeToggle<cr>', 'Toggle Undotree'},
     -- Project --

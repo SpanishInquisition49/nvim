@@ -70,11 +70,13 @@ return require('packer').startup(function(use)
   use ('goolord/alpha-nvim')
   -- Which Key
   use {
-  "folke/which-key.nvim",
-  config = function()
-    vim.o.timeout = true
-    vim.o.timeoutlen = 300
-    require("which-key").setup()
-  end
-}
+      "folke/which-key.nvim",
+      config = function()
+          vim.o.timeout = true
+          vim.o.timeoutlen = 300
+          require("which-key").setup()
+      end
+      -- Indent Line
+  }
+  use ("lukas-reineke/indent-blankline.nvim")
 end)
