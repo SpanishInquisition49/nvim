@@ -19,7 +19,7 @@ dap.configurations.c = {
       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
     end,
     MIMode = 'gdb',
-    miDebuggerPAth = 'gdb',
+    miDebuggerPath = 'gdb',
     cwd = '${workspaceFolder}',
     stopAtEntry = true,
     args = {},
@@ -29,23 +29,17 @@ dap.configurations.c = {
 dap.configurations.c = dap.configurations.c
 dap.configurations.rust = dap.configurations.c
 
--- DAP UI Auto Toggle --
+-- DAP UI Auto open on launch --
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
-end
-dap.listeners.before.event_terminated["dapui_config"] = function()
-  dapui.close()
-end
-dap.listeners.before.event_exited["dapui_config"] = function()
-  dapui.close()
 end
 -- Breakpoint Icons --
 vim.api.nvim_set_hl(0, 'DapBreakpoint', { fg='#f38ba8', bg='#31353f' })
 vim.api.nvim_set_hl(0, 'DapLogPoint', { fg='#f38ba8', bg='#31353f' })
-vim.api.nvim_set_hl(0, 'DapStopped', { fg='#fab387', bg='#31353f' })
+vim.api.nvim_set_hl(0, 'DapStopped', { fg='#A6E3A1', bg='#31353f' })
 
 vim.fn.sign_define('DapBreakpoint', { text='', texthl='DapBreakpoint', linehl='DapBreakpoint', numhl='DapBreakpoint' })
-vim.fn.sign_define('DapBreakpointCondition', { text='󰜋', texthl='DapBreakpoint', linehl='DapBreakpoint', numhl='DapBreakpoint' })
-vim.fn.sign_define('DapBreakpointRejected', { text='', texthl='DapBreakpoint', linehl='DapBreakpoint', numhl= 'DapBreakpoint' })
+vim.fn.sign_define('DapBreakpointCondition', { text='', texthl='DapBreakpoint', linehl='DapBreakpoint', numhl='DapBreakpoint' })
+vim.fn.sign_define('DapBreakpointRejected', { text='', texthl='DapBreakpoint', linehl='DapBreakpoint', numhl= 'DapBreakpoint' })
 vim.fn.sign_define('DapLogPoint', { text='󰜋', texthl='DapLogPoint', linehl='DapLogPoint', numhl= 'DapLogPoint' })
-vim.fn.sign_define('DapStopped', { text='', texthl='DapStopped', linehl='DapStopped', numhl= 'DapStopped' })
+vim.fn.sign_define('DapStopped', { text='', texthl='DapStopped', linehl='DapStopped', numhl= 'DapStopped' })

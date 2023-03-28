@@ -19,6 +19,8 @@ wk.register({
     ['<leader>t8'] = {function() vim.cmd.BufferLineGoToBuffer(8) end, 'Tab 8'},
     ['<leader>t9'] = {function() vim.cmd.BufferLineGoToBuffer(9) end, 'Tab 9'},
     ['<leader>t0'] = {function() vim.cmd.BufferLineGoToBuffer(0) end, 'Tab 10'},
+    ['<leader>tn'] = {'<cmd>BufferLineCycleNext<cr>', 'Next Tab'},
+    ['<leader>tp'] = {'<cmd>BufferLineCyclePrev<cr>', 'Prev Tab'},
     ['<leader>q'] = {'<cmd>bd<cr>', 'Close Tab'},
     -- Git --
     ['<leader>g'] = { name = '+Git' },
@@ -28,10 +30,15 @@ wk.register({
     ['<leader>gf'] = {'<cmd>Telescope git_files<cr>', 'Files'},
     ['<leader>gs'] = {'<cmd>Git<cr>', 'Status'},
     -- Debug --
-    ['<leader>d'] = { name = '+Debug'},
+    ['<leader>d'] = { name = '+Debug', mode = {'n','v'} },
     ['<leader>db'] = {'<cmd>DapToggleBreakpoint<cr>', 'Toggle Breakpoint'},
-    ['<leader>dl'] = {function() require('dap').set_breakpoint( { log_message = vim.fn.input('Log point message: ') } ) end, 'LogPoint'},
+    ['<leader>dc'] = {function() require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: ') ) end, 'Conditional Breakpoint'},
+    ['<leader>dl'] = {function() require('dap').set_breakpoint(nil,nil, vim.fn.input('LogPoint message: ')) end, 'LogPoint'},
     ['<leader>du'] = {function() require('dapui').toggle() end, 'Toggle Dap Ui'},
+    ['<leader>dw'] = {function() require('dapui').elements.watches.add() end, 'Add to Watches'},
+    ['<leader>dW'] = {function() require('dapui').elements.watches.remove() end, 'Remove Watch'},
+    ['<leader>de'] = {function() require('dapui').eval() end, 'Eval Selection', mode = {'n', 'v'} },
+    ['<leader>dC'] = {function() require('dap').clear_breakpoints() end, 'Clear Breakpoints'},
     ['<F5>'] = {'<cmd>DapContinue<cr>', 'Debug Continue'},
     ['<F10>'] = {'<cmd>DapStepOver<cr>', 'Debug Step Over'},
     ['<F11>'] = {'<cmd>DapStepInto<cr>', 'Debug Step Into'},
@@ -42,9 +49,13 @@ wk.register({
     ['<leader>l'] = { name = '+LSP' },
     ['<leader>ld'] = {'<cmd>ToggleDiag<cr>', 'Toggle Diagnostics'},
     ['<leader>li'] = {'<cmd>IndentBlanklineToggle<cr>', 'Toggle Indent Line'},
+    ['<leader>ls'] = {'<cmd>Telescope diagnostics<cr>', 'Workspace Diagnostics'},
     -- Undotree --
     ['<leader>u'] = {'<cmd>UndotreeToggle<cr>', 'Toggle Undotree'},
     -- Project --
     ['<leader>p'] = { name = 'Project'},
     ['<leader>pf'] = {'<cmd>Telescope find_files<cr>', 'Find File'},
+    ['<leader>pr'] = {'<cmd>Telescope lsp_references<cr>', 'Find all references'},
+    ['<leader>pd'] = {'<cmd>Telescope lsp_definitions<cr>', 'Goto Definitions'},
+    ['<leader>pi'] = {'<cmd>Telescope lsp_implementations<cr>', 'Goto Implementations'},
 })
