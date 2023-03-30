@@ -1,5 +1,12 @@
 local wk = require('which-key')
 
+local function continue()
+    if vim.fn.filereadable('.vscode/launch.json') then
+       require('dap.ext.vscode').load_launchjs(nil, { cppdbg = {'c','cpp', 'rust'}})
+    end
+    require('dap').continue()
+end
+
 wk.register({
     -- File Explorer --
     ['<leader>e'] = {'<cmd>NvimTreeToggle<cr>', 'Toggle Explorer'},
@@ -31,15 +38,15 @@ wk.register({
     ['<leader>gs'] = {'<cmd>Git<cr>', 'Status'},
     -- Debug --
     ['<leader>d'] = { name = '+Debug', mode = {'n','v'} },
-    ['<leader>db'] = {'<cmd>DapToggleBreakpoint<cr>', 'Toggle Breakpoint'},
-    ['<leader>dc'] = {function() require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: ') ) end, 'Conditional Breakpoint'},
+    ['<leader>db'] = {'<cmd>PBToggleBreakpoint<cr>', 'Toggle Breakpoint'},
+    ['<leader>dc'] = {function() require('persistent-breakpoints.api').set_conditional_breakpoint() end, 'Conditional Breakpoint'},
     ['<leader>dl'] = {function() require('dap').set_breakpoint(nil,nil, vim.fn.input('LogPoint message: ')) end, 'LogPoint'},
     ['<leader>du'] = {function() require('dapui').toggle() end, 'Toggle Dap Ui'},
     ['<leader>dw'] = {function() require('dapui').elements.watches.add() end, 'Add to Watches'},
     ['<leader>dW'] = {function() require('dapui').elements.watches.remove() end, 'Remove Watch'},
-    ['<leader>de'] = {function() require('dapui').eval() end, 'Eval Selection', mode = {'n', 'v'} },
+    ['<leader>de'] = {function() require('dapui').eval(nil, {}) end, 'Eval Selection', mode = {'n', 'v'} },
     ['<leader>dC'] = {function() require('dap').clear_breakpoints() end, 'Clear Breakpoints'},
-    ['<F5>'] = {'<cmd>DapContinue<cr>', 'Debug Continue'},
+    ['<F5>'] = { continue, 'Debug Continue'},
     ['<F10>'] = {'<cmd>DapStepOver<cr>', 'Debug Step Over'},
     ['<F11>'] = {'<cmd>DapStepInto<cr>', 'Debug Step Into'},
     ['<F12>'] = {'<cmd>DapStepOut<cr>', 'Debug Step Out'},
@@ -58,4 +65,5 @@ wk.register({
     ['<leader>pr'] = {'<cmd>Telescope lsp_references<cr>', 'Find all references'},
     ['<leader>pd'] = {'<cmd>Telescope lsp_definitions<cr>', 'Goto Definitions'},
     ['<leader>pi'] = {'<cmd>Telescope lsp_implementations<cr>', 'Goto Implementations'},
+    ['<leader>Z'] = {'<cmd>ZenMode<cr>', 'Zen Mode'},
 })

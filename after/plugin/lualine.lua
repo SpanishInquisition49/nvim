@@ -1,8 +1,7 @@
 vim.opt.showmode = false
 
 local function git_stash_count()
-    local git_stats = vim.api.nvim_exec('!git status', true)
-    if string.match(git_stats, 'not a git repository') then
+    if vim.fn.isdirectory('.git') == 0 then
         return 0
     end
     local stash = vim.api.nvim_exec('!git stash list', true):sub(20)
@@ -33,11 +32,11 @@ end
 local alpha = {
     sections = {
         lualine_a = {
-            {'mode', fmt = function() return my_mode_fmt('ALPHA') end }
+            { 'mode', fmt = function() return my_mode_fmt('ALPHA') end }
         },
         lualine_b = {
             { 'branch',  icon = {' ', color={fg='white'} } },
-            { stash, cond = function()return git_stash_count() > 0 end },
+            { stash, cond = function() return git_stash_count() > 0 end },
         }
     },
     filetypes = {'alpha'}

@@ -1,6 +1,10 @@
 require('mason').setup()
 local dap = require('dap')
 local dapui = require('dapui')
+require('persistent-breakpoints').setup{
+	load_breakpoints_event = { "BufReadPost" }
+}
+
 dapui.setup()
 
 dap.adapters.cppdbg = {

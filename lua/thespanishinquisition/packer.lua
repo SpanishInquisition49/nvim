@@ -24,6 +24,7 @@ return require('packer').startup(function(use)
   use ('nvim-tree/nvim-web-devicons')
   -- DAP
   use ('mfussenegger/nvim-dap')
+  use ('Weissle/persistent-breakpoints.nvim')
   use {'rcarriga/nvim-dap-ui', requires = {'mfussenegger/nvim-dap'}}
   -- LSP
   use {
@@ -76,7 +77,12 @@ return require('packer').startup(function(use)
           vim.o.timeoutlen = 300
           require("which-key").setup()
       end
-      -- Indent Line
   }
+  -- Indent Line
   use ("lukas-reineke/indent-blankline.nvim")
+  -- Merge Tool
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+  -- Zen Mode
+  use ('folke/zen-mode.nvim')
+
 end)
