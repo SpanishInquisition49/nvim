@@ -9,6 +9,20 @@ local function git_stash_count()
     return count
 end
 
+local function get_node_version()
+    local scripts = vim.api.nvim_exec('!node -v', true)
+    return '󰎙 ' .. vim.trim((vim.split(scripts, '\n'))[3])
+end
+
+local function is_node_file()
+    local bufnr = vim.api.nvim_get_current_buf()
+    local type = vim.bo[bufnr].filetype
+    if type == 'javascript' or type == 'typescript' then
+        return true
+    end
+    return false
+end
+
 local function stash()
     return ' ' .. git_stash_count()
 end
@@ -67,7 +81,7 @@ require('lualine').setup {
             { 'mode', fmt = my_mode_fmt }
         },
         lualine_b = {
-            { 'branch',  icon = {' ', color={fg='white'} } },
+            { 'branch',  icon = {' ', color={fg='white'} }, on_click = function() vim.cmd.Telescope("git_branches") end },
             { stash, cond = function()return git_stash_count() > 0 end },
             'diff',
         },
@@ -87,7 +101,16 @@ require('lualine').setup {
                 always_visible = true
             },
         },
-        lualine_x = {'encoding', 'filesize', 'fileformat', 'filetype'},
+        lualine_x = {
+            'encoding',
+            'filesize',
+            'fileformat',
+            'filetype',
+            {
+                get_node_version,
+                cond = is_node_file
+            }
+        },
         lualine_y = {'progress'},
         lualine_z = {'location'}
     },
