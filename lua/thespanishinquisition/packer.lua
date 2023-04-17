@@ -14,6 +14,7 @@ return require('packer').startup(function(use)
   use ('wakatime/vim-wakatime')
   -- Themes
   use { "catppuccin/nvim", as = "catppuccin" }
+  use { "ellisonleao/gruvbox.nvim", as = "gruvbox" }
   use ('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate'})
   -- Undo Tree
   use ('mbbill/undotree')
@@ -84,5 +85,4 @@ return require('packer').startup(function(use)
   use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
   -- Zen Mode
   use ('folke/zen-mode.nvim')
-
 end)

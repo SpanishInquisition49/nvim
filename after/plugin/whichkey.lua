@@ -45,7 +45,7 @@ wk.register({
     ['<leader>dw'] = {function() require('dapui').elements.watches.add() end, 'Add to Watches'},
     ['<leader>dW'] = {function() require('dapui').elements.watches.remove() end, 'Remove Watch'},
     ['<leader>de'] = {function() require('dapui').eval(nil, {}) end, 'Eval Selection', mode = {'n', 'v'} },
-    ['<leader>dC'] = {function() require('dap').clear_breakpoints() end, 'Clear Breakpoints'},
+    ['<leader>dC'] = {function() require('persistent-breakpoints.api').clear_all_breakpoints() end, 'Clear Breakpoints'},
     ['<F5>'] = { continue, 'Debug Continue'},
     ['<F10>'] = {'<cmd>DapStepOver<cr>', 'Debug Step Over'},
     ['<F11>'] = {'<cmd>DapStepInto<cr>', 'Debug Step Into'},
