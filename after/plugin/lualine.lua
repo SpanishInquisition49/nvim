@@ -62,7 +62,7 @@ require('lualine').setup {
         icons_enabled = true,
         theme = 'auto',
         component_separators = { left = '', right = ''},
-        section_separators = { left = '', right = ''},
+        section_separators = { left = '', right = ''},
         disabled_filetypes = {
             statusline = {},
             winbar = {},
@@ -83,7 +83,9 @@ require('lualine').setup {
         lualine_b = {
             { 'branch',  icon = {' ', color={fg='white'} }, on_click = function() vim.cmd.Telescope("git_branches") end },
             { stash, cond = function()return git_stash_count() > 0 end },
-            'diff',
+                {   'diff',
+                    symbols = { added= '󰜄 ', modified='󱗝 ', removed='󰛲 '},
+                },
         },
         lualine_c = {
             {
