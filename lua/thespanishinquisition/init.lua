@@ -30,9 +30,21 @@ return require('lazy').setup({
         as = "catppuccin"
     },
     {
+        'navarasu/onedark.nvim',
+        as = 'onedark',
+        config = function ()
+            require('onedark').setup {
+                style = 'darker'
+            }
+        end
+    },
+    {
         "ellisonleao/gruvbox.nvim",
         as = "gruvbox"
     },
+    { 'rose-pine/neovim', name = 'rose-pine' },
+    -- TMUX
+    'christoomey/vim-tmux-navigator',
     -- Tree Sitter
     'nvim-treesitter/nvim-treesitter',
     -- Undo Tree
@@ -44,6 +56,7 @@ return require('lazy').setup({
     'nvim-tree/nvim-web-devicons',
     -- DAP
     'mfussenegger/nvim-dap',
+    { "mxsdev/nvim-dap-vscode-js", dependencies = {"mfussenegger/nvim-dap"} },
     'Weissle/persistent-breakpoints.nvim',
     {
         'rcarriga/nvim-dap-ui',
@@ -74,6 +87,8 @@ return require('lazy').setup({
     },
     -- LSP Diagnostics Toggle
     'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim',
+    -- LSP Outline
+    'simrat39/symbols-outline.nvim',
     -- Status Line
     {
         "nvim-lualine/lualine.nvim",

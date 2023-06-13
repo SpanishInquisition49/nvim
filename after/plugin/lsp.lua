@@ -1,6 +1,7 @@
 local lsp = require('lsp-zero')
 local lsp_diagnostic = require('toggle_lsp_diagnostics')
 local lsp_config = require('lspconfig')
+local lsp_outline = require('symbols-outline')
 
 lsp.preset('recommended')
 lsp.ensure_installed({
@@ -33,4 +34,5 @@ lsp_config.lua_ls.setup({
    },
 })
 
+lsp_outline.setup()
 lsp_diagnostic.init()
